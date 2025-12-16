@@ -9,7 +9,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="HealthCare">
     <title>HealthCare Pro - Quản lý sức khỏe</title>
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkhlYWx0aENhcmUgUHJvIiwKICAic2hvcnRfbmFtZSI6ICJIZWFsdGhDYXJlIiwKICAiZGVzY3JpcHRpb24iOiAiVeG7qW5nIGThu6VuZyBxdeG6o24gbMO9IHPhu6ljIGto4buPZSB0aMO0bmcgbWluaCIsCiAgInN0YXJ0X3VybCI6ICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmZmZmZmIiwKICAidGhlbWVfY29sb3IiOiAiIzI1NjNlYiIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxOTInIGhlaWdodD0nMTkyJyUzRSUzQ3JlY3Qgd2lkdGg9JzE5MicgaGVpZ2h0PScxOTInIGZpbGw9JyUyMzI1NjNlYicvJTNFJTNDcGF0aCBkPSdNOTYgNDBjLTMwLjkgMC01NiAyNS4xLTU2IDU2IDAgMjQuNyAxNiA0NS42IDM4LjEgNTMuMUw5NiAxODRsMTcuOS0zNC45QzEzNiAxNDEuNiAxNTIgMTIwLjcgMTUyIDk2YzAtMzAuOS0yNS4xLTU2LTU2LTU2em0wIDc2Yy0xMS4wNDYgMC0yMC04Ljk1NC0yMC0yMHM4Ljk1NC0yMCAyMC0yMCAyMCA4Ljk1NCAyMCAyMC04Ljk1NCAyMC0yMCAyMHonIGZpbGw9JyNmZmYnLyUzRSUzQy9zdmclM0UiLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%232563eb' rx='40'/%3E%3Cpath d='M96 40c-15.5 0-28 12.5-28 28 0 12.4 8 22.8 19 26.5V120h18V94.5c11-3.7 19-14.1 19-26.5 0-15.5-12.5-28-28-28zm0 38c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zm-9 44v28h18v-28h-18z' fill='%23fff'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%232563eb' rx='40'/%3E%3Cpath d='M96 40c-15.5 0-28 12.5-28 28 0 12.4 8 22.8 19 26.5V120h18V94.5c11-3.7 19-14.1 19-26.5 0-15.5-12.5-28-28-28zm0 38c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zm-9 44v28h18v-28h-18z' fill='%23fff'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * { -webkit-tap-highlight-color: transparent; }
@@ -452,10 +454,19 @@
         // Initialize PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('data:text/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZSA9PiB7IGNvbnNvbGUubG9nKCdTVyBpbnN0YWxsZWQnKTsgfSk7IHNlbGYuYWRkRXZlbnRMaXN0ZW5lcignZmV0Y2gnLCBlID0+IHsgZS5yZXNwb25kV2l0aChmZXRjaChlLnJlcXVlc3QpKTsgfSk7')
-                    .then(() => console.log('PWA Ready'))
-                    .catch(() => console.log('PWA Failed'));
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => {
+                        console.log('✅ Service Worker registered:', reg);
+                    })
+                    .catch(err => {
+                        console.log('❌ Service Worker registration failed:', err);
+                    });
             });
+        }
+
+        // Check if running as PWA
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log('✅ Running as PWA!');
         }
 
         // Initial render
