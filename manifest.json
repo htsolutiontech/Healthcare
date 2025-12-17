@@ -1,0 +1,39 @@
+{
+  "name": "HealthCare Pro",
+  "short_name": "HealthCare",
+  "description": "Ứng dụng quản lý sức khỏe thông minh với hỗ trợ thiết bị đo sinh tồn và ECG",
+  "start_url": "/Healthcare/health.html",
+  "scope": "/Healthcare/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/Healthcare/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Healthcare/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Healthcare/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Healthcare/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [],
+  "screenshots": []
+}
